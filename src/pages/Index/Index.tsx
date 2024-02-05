@@ -2,17 +2,17 @@ import SelectLang from "@/pages/Index/components/SelectLang";
 import SelectTheme from "./components/SelectTheme";
 import SelectColor from "./components/SelectColor";
 import useConfig from "@/hooks/useConfig";
-import { FormEvent } from "react";
-import { CodeBlock } from "react-code-blocks";
+import { FormEvent, useCallback } from "react";
+import Editor from "@/pages/Index/components/Editor";
 
 export default function Index() {
-  const { background, language,setState } = useConfig();
+  const { background, language, setState } = useConfig();
 
-  const handleChange = (event: FormEvent<HTMLSelectElement>) => {
+  const handleChange = useCallback((event: FormEvent<HTMLSelectElement>) => {
     const name = event.currentTarget.name;
     const value = event.currentTarget.value;
     setState((prev) => ({ ...prev, [name]: value }));
-  };
+  }, []);
 
   return (
     <section
@@ -23,7 +23,7 @@ export default function Index() {
         <nav>
           <ul className="flex gap-4">
             <li>
-              <SelectLang onChange={handleChange} value={language}/>
+              <SelectLang onChange={handleChange} value={language} />
             </li>
             <li>
               <SelectTheme />
@@ -34,17 +34,9 @@ export default function Index() {
           </ul>
         </nav>
       </header>
-      <main className="max-w-5xl [&>span]:min-w-[500px] self-center m-auto">
-        <CodeBlock text={`//Hola mundo 
-import React from 'react'
-
-export default function Index() {
-  return (
-    <div>Index</div>
-  )
-} `} language={language} />
+      <main className="max-w-5xl [&>span]:min-w-[500px] [&>span]:py-3 self-center m-auto">
+        <Editor language={language} />
       </main>
     </section>
   );
 }
-

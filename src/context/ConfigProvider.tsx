@@ -3,13 +3,14 @@ import { createContext, ReactNode, useState } from "react";
 
 interface ProviderState {
   state: ConfigType;
-  setState: (state: ConfigType) => void;
+  setState: (state: ConfigType | ((state: ConfigType) => ConfigType)) => void;
 }
 
 const initialState: ConfigType = {
-  themes: ``,
-  background: `#f0c6c6`, 
-  language: ``,
+  theme: `dracula`,
+  background: `#cba6f7`,
+  language: `typescript`,
+  content: ``,
 };
 
 export const ConfigContext = createContext<ProviderState>({

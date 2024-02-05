@@ -1,5 +1,6 @@
 export interface ConfigType{
-  themes: string;
+  theme: string;
   background: string;
-  language: string
+  language: string;
+  content: string;
 }
