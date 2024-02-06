@@ -7,6 +7,12 @@ export default {
         source: ['"Source Code Pro Variable"', "sans-serif"],
         onest: ['"Onest Variable"', "sans-serif"],
       },
+      backgroundColor:{
+        "ctp-base": "#1e1e2e"
+      },
+      textColor: {
+        "ctp-base": "#1e1e2e"
+      }
     },
   },
   plugins: [],

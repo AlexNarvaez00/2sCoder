@@ -17,10 +17,10 @@ export default function Index() {
 
   return (
     <section
-      className="w-full min-h-screen p-10 flex flex-col gap-5 "
+      className="w-full min-h-screen p-10 flex flex-col gap-4"
       style={{ background }}
     >
-      <h1>Create block code in a image</h1>
+      <h1 className="font-onest font-bold text-4xl text-center text-ctp-base">Create images from blocks of source code.</h1>
       <header className="max-w-5xl mx-auto">
         <nav>
           <ul className="flex gap-4">
@@ -40,7 +40,7 @@ export default function Index() {
         <Editor language={language} theme={theme} />
       </main>
       <footer className="self-end mx-auto">
-          By Alexis Narvaez 💜
+          By <a href="https://alexisnarvaezruiz.vercel.app/" target="_blank" className="underline" >Alexis Narvaez</a> 💜, for you.
       </footer>
     </section>
   );
