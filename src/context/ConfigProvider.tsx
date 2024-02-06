@@ -10,7 +10,13 @@ const initialState: ConfigType = {
   theme: `dracula`,
   background: `#cba6f7`,
   language: `typescript`,
-  content: ``,
+  content: `import React from 'react'
+
+export default function ConfigProvider() {
+  return (
+    <div>ConfigProvider</div>
+  )
+}`,
 };
 
 export const ConfigContext = createContext<ProviderState>({
@@ -31,3 +37,6 @@ export const ConfigProvider = ({ children }: Props) => {
     </ConfigContext.Provider>
   );
 };
+
+
+

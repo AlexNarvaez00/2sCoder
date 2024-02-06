@@ -3,7 +3,8 @@ import Option from "@/components/Option";
 import Select from "@/components/Select";
 import { Label } from "@/components/Label";
 import { OptionsType } from "@/pages/Index/types/OptionType";
-import { useId } from "react";
+import { useId, useState, FormEvent, memo } from "react";
+import { Props } from "@/pages/Index/types/SelectType";
 
 const options: OptionsType[] = [
   { label: "A11y Dark", value: "a11yDark"},
@@ -48,13 +49,19 @@ const options: OptionsType[] = [
   { label: "Tomorrow Night Eightis", value: "tomorrowNightEighties"},
 ];
 
-export default function SelectTheme() {
+function SelectTheme({onChange, value}: Props) {
+  const [state,setState ] = useState<string>(value);
   const id = useId();
+
+  const handleChange = (event: FormEvent<HTMLSelectElement>) => {
+    setState(event.currentTarget.value);
+    onChange(event);
+  };
 
   return (
     <div className="select">
       <Label htmlFor={id}>Theme</Label>
-      <Select id={id}>
+      <Select id={id}  onChange={handleChange} value={state} name="theme" >
         {options.map(({ value, label }, index) => (
           <Option value={value} key={index}>
             {label}
@@ -64,3 +71,4 @@ export default function SelectTheme() {
     </div>
   );
 }
+export default memo(SelectTheme); 

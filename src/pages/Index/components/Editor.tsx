@@ -1,18 +1,28 @@
+import "./editor.css";
 import useConfig from "@/hooks/useConfig";
-import { FormEvent,  useState } from "react";
+import { FormEvent,  useState, memo, useEffect } from "react";
 import { CodeBlock } from "react-code-blocks";
 import { VscEdit, VscSymbolNamespace } from "react-icons/vsc";
 
 interface Props {
   language: string;
+  theme:string;
 }
 
 //const theme = await import("react-code-blocks/src/themes/dracula");
 
-export default function Editor({ language }: Props) {
-  const [show, setShow] = useState<Boolean>(true);
-  const [code, setCode] = useState<string>(``);
+function Editor({ language, theme }: Props) { 
   const { setState, content } = useConfig();
+  
+  const [show, setShow] = useState<Boolean>(true);
+  const [code, setCode] = useState<string>(content);
+  const [colors, setColors] = useState<Object|null>({});
+ 
+  useEffect(() =>{
+    import("react-code-blocks").then(module =>{
+      setColors(module[theme] as Object);
+    });
+  },[theme]);
 
   const handleBlur = (event: FormEvent<HTMLTextAreaElement>) => {
     const value = event.currentTarget.value;
@@ -42,6 +52,7 @@ export default function Editor({ language }: Props) {
         <CodeBlock
           text={content}
           language={language}
+          theme={colors ?? {}}
         />
       )}
       {!show && (
@@ -56,3 +67,5 @@ export default function Editor({ language }: Props) {
     </>
   );
 }
+
+export default memo(Editor);

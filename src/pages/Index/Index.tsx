@@ -6,7 +6,7 @@ import { FormEvent, useCallback } from "react";
 import Editor from "@/pages/Index/components/Editor";
 
 export default function Index() {
-  const { background, language, setState } = useConfig();
+  const { background, language, setState, theme } = useConfig();
 
   const handleChange = useCallback((event: FormEvent<HTMLSelectElement>) => {
     const name = event.currentTarget.name;
@@ -26,7 +26,7 @@ export default function Index() {
               <SelectLang onChange={handleChange} value={language} />
             </li>
             <li>
-              <SelectTheme />
+              <SelectTheme onChange={handleChange}  value={theme}  />
             </li>
             <li>
               <SelectColor onChange={handleChange} value={background} />
@@ -34,8 +34,8 @@ export default function Index() {
           </ul>
         </nav>
       </header>
-      <main className="max-w-5xl [&>span]:min-w-[500px] [&>span]:py-3 self-center m-auto">
-        <Editor language={language} />
+      <main className="max-w-5xl [&>span]:min-w-[500px] [&>span]:py-3 self-center m-auto" style={{ background }}  > 
+        <Editor language={language} theme={theme} />
       </main>
     </section>
   );
