@@ -1,6 +1,7 @@
 @tailwind components;
 @layer components {
   span{
+    @apply font-source;
     @apply rounded-3xl !important;
   }
 }

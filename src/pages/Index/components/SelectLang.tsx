@@ -104,7 +104,7 @@ function SelectLang({ onChange, value }: Props) {
   return (
     <div className="select">
       <Label htmlFor={id}>Language</Label>
-      <Select id={id} name="language" onChange={handleChange} value={state}>
+      <Select id={id} name="language" onChange={handleChange} value={state} >
         {options.map(({ value, label }, index) => (
           <Option value={value} key={index}>
             {label}

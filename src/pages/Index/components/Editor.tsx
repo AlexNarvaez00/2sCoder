@@ -1,3 +1,4 @@
+import '@fontsource-variable/source-code-pro';
 import "./editor.css";
 import useConfig from "@/hooks/useConfig";
 import { FormEvent,  useState, memo, useEffect } from "react";
@@ -8,8 +9,6 @@ interface Props {
   language: string;
   theme:string;
 }
-
-//const theme = await import("react-code-blocks/src/themes/dracula");
 
 function Editor({ language, theme }: Props) { 
   const { setState, content } = useConfig();
@@ -60,7 +59,7 @@ function Editor({ language, theme }: Props) {
           onBlur={handleBlur}
           onChange={handleChange}
           value={code}
-          className="block p-4 w-full rounded-lg border border-[#1e1e2e] bg-[#1e1e2e] min-w-[500px] text-[#cdd6f4]"
+          className="block p-4 pl-7 w-full border border-[#1e1e2e] bg-[#1e1e2e] min-w-[500px] text-[#cdd6f4] font-source rounded-3xl"
           rows={8}
         ></textarea>
       )}

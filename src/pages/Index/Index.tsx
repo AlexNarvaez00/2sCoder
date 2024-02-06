@@ -1,3 +1,4 @@
+import '@fontsource-variable/onest';
 import SelectLang from "@/pages/Index/components/SelectLang";
 import SelectTheme from "./components/SelectTheme";
 import SelectColor from "./components/SelectColor";
@@ -19,6 +20,7 @@ export default function Index() {
       className="w-full min-h-screen p-10 flex flex-col gap-5 "
       style={{ background }}
     >
+      <h1>Create block code in a image</h1>
       <header className="max-w-5xl mx-auto">
         <nav>
           <ul className="flex gap-4">
@@ -29,7 +31,7 @@ export default function Index() {
               <SelectTheme onChange={handleChange}  value={theme}  />
             </li>
             <li>
-              <SelectColor onChange={handleChange} value={background} />
+              <SelectColor value={background} />
             </li>
           </ul>
         </nav>
@@ -37,6 +39,9 @@ export default function Index() {
       <main className="max-w-5xl [&>span]:min-w-[500px] [&>span]:py-3 self-center m-auto" style={{ background }}  > 
         <Editor language={language} theme={theme} />
       </main>
+      <footer className="self-end mx-auto">
+          By Alexis Narvaez 💜
+      </footer>
     </section>
   );
 }
