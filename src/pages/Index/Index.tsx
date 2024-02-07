@@ -4,26 +4,31 @@ import SelectLang from "@/pages/Index/components/SelectLang";
 import SelectTheme from "./components/SelectTheme";
 import SelectColor from "./components/SelectColor";
 import useConfig from "@/hooks/useConfig";
-import { FormEvent, useCallback } from "react";
+import { FormEvent, MouseEvent, useCallback, useRef } from "react";
 import Editor from "@/pages/Index/components/Editor";
-import { useToPng } from "@hugocxl/react-to-image";
+import IconDownload from "@/pages/Index/components/IconDownload";
+import { putInClipboard } from "./service/Image";
+import { toast } from "sonner";
 
 export default function Index() {
   const { background, language, setState, theme } = useConfig();
-  const [_, convertToPng, ref] = useToPng<HTMLDivElement>({
-    onSuccess: (data) => {
-      navigator.clipboard.writeText(data).then(()=>{
-        alert("copiado");
-      });
-      //console.log(data);
-    },
-  });
+  const editorRef = useRef<HTMLDivElement | null>(null);
 
   const handleChange = useCallback((event: FormEvent<HTMLSelectElement>) => {
     const name = event.currentTarget.name;
     const value = event.currentTarget.value;
     setState((prev) => ({ ...prev, [name]: value }));
   }, []);
+
+  const handleDownload = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (!editorRef.current) return;
+      putInClipboard(editorRef.current).then((res) => {
+        if (res == "ok") toast("Image copied to clipboard 🚀");
+      });
+    },
+    [editorRef],
+  );
 
   return (
     <section
@@ -45,13 +50,15 @@ export default function Index() {
             <li>
               <SelectColor value={background} />
             </li>
-            <li onClick={convertToPng}>convert</li>
+            <li>
+              <IconDownload onClick={handleDownload} />
+            </li>
           </ul>
         </nav>
       </header>
       <div
-        ref={ref}
-        className="w-full px-32 py-14 self-center m-auto"
+        ref={editorRef}
+        className="w-full px-24 self-center mx-auto py-16 box-border"
         style={{ background }}
       >
         <section className="max-w-lg mx-auto editor">

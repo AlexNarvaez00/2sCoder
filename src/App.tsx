@@ -2,6 +2,7 @@ import "./index.css";
 
 import Index from "@/pages/Index/Index";
 import { ConfigProvider } from "./context/ConfigProvider";
+import {Toaster} from "sonner";
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <main className="w-full min-h-screen">
         <Index />
       </main>
+      <Toaster theme="dark" />
     </ConfigProvider>
   );
 }
