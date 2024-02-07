@@ -21,6 +21,7 @@ export default function ConfigProvider() {
 
 export const ConfigContext = createContext<ProviderState>({
   state: initialState,
+  //@ts-ignore
   setState: (state) => null,
 });
 

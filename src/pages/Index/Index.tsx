@@ -21,6 +21,7 @@ export default function Index() {
   }, []);
 
   const handleDownload = useCallback(
+    //@ts-ignore
     (event: MouseEvent<HTMLDivElement>) => {
       if (!editorRef.current) return;
       putInClipboard(editorRef.current).then((res) => {
