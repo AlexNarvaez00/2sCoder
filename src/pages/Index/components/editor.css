@@ -1,7 +1,10 @@
 @tailwind components;
 @layer components {
-  span{
-    @apply font-source;
+  .editor > span {
+    @apply py-3;
     @apply rounded-3xl !important;
+  }
+  .editor {
+    @apply font-source;
   }
 }

@@ -1,5 +1,4 @@
 import '@fontsource-variable/source-code-pro';
-import "./editor.css";
 import useConfig from "@/hooks/useConfig";
 import { FormEvent,  useState, memo, useEffect } from "react";
 import { CodeBlock } from "react-code-blocks";
