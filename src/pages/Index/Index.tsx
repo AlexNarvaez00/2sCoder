@@ -40,7 +40,7 @@ export default function Index() {
       </h1>
       <header className="w-full max-w-5xl mx-auto flex">
         <nav className="mx-auto">
-          <ul className="flex gap-4">
+          <ul className="flex gap-4 flex-col md:flex-row">
             <li>
               <SelectLang onChange={handleChange} value={language} />
             </li>
@@ -58,7 +58,7 @@ export default function Index() {
       </header>
       <div
         ref={editorRef}
-        className="w-full px-24 self-center mx-auto py-16 box-border"
+        className="w-full md:px-24 self-center mx-auto py-16 box-border"
         style={{ background }}
       >
         <section className="max-w-lg mx-auto editor">

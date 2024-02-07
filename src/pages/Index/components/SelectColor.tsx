@@ -64,7 +64,7 @@ function SelectColor({ value }: Props) {
   }, [color]);
 
   return (
-    <div className="select">
+    <div className="select justify-between">
       <Label htmlFor={id}>Color</Label>
       <div id={id} className="relative p-2">
         <span
