@@ -77,7 +77,7 @@ function SelectColor({ value }: Props) {
           style={{ display: `${show ? "block" : "none"}` }}
         >
           {options.map(({ value, label }, index) => (
-            <li value={value} key={index} className="flex">
+            <li value={value} key={index} className="flex hover:bg-gray-200/10">
               <a
                 href="#"
                 onClick={handleClick(value)}
