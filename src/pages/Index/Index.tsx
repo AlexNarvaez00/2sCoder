@@ -27,19 +27,18 @@ export default function Index() {
         if (res == "ok") toast("Image copied to clipboard 🚀");
       });
     },
-    [editorRef],
-  );
+    [editorRef]);
 
   return (
+  <div style={{ background }} className="w-full">
     <section
-      className="w-full min-h-screen p-10 flex flex-col gap-4"
-      style={{ background }}
+      className="w-full max-w-3xl min-h-screen p-10 flex flex-wrap gap-4 mx-auto"
     >
-      <h1 className="font-onest font-bold text-4xl text-center text-ctp-base">
+      <h1 className="w-full font-onest font-bold text-4xl text-center text-ctp-base">
         Create images from blocks of source code.
       </h1>
-      <header className="max-w-5xl mx-auto">
-        <nav>
+      <header className="w-full max-w-5xl mx-auto flex">
+        <nav className="mx-auto">
           <ul className="flex gap-4">
             <li>
               <SelectLang onChange={handleChange} value={language} />
@@ -65,7 +64,7 @@ export default function Index() {
           <Editor language={language} theme={theme} />
         </section>
       </div>
-      <footer className="self-end mx-auto">
+      <footer className="w-full self-end mx-auto text-center">
         By{" "}
         <a
           href="https://alexisnarvaezruiz.vercel.app/"
@@ -83,5 +82,6 @@ export default function Index() {
         </a>
       </footer>
     </section>
+  </div>
   );
 }
