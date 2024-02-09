@@ -6,5 +6,6 @@
   }
   .editor {
     @apply font-source;
+    @apply text-sm md:text-base;
   }
 }

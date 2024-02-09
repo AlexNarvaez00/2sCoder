@@ -18,4 +18,10 @@ export const putInClipboard = async (editor: HTMLDivElement) => {
   return "ok";
 };
 
-export const downloadImage = () => {};
+export const downloadImage = async (editor: HTMLDivElement) => {
+  const img = await toPng(editor);
+  const link = document.createElement("a");
+  link.download = "2sCoder by A-Narvaez.jpeg";
+  link.href = img;
+  link.click();
+};
