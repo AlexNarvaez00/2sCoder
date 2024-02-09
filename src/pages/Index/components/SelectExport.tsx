@@ -11,8 +11,7 @@ interface Props{
 
 function SelectExport({ onChange }:Props) {
   const id = useId();
-  const [state,setState] = useState<string>("ff");
-
+  const [state,_] = useState<string>("ff");
 
   const handleChange = (event:FormEvent<HTMLSelectElement>) => {
     onChange(event);
